@@ -28,7 +28,7 @@
             }
             if($check==1&& $check1==0){
                 $pass=md5($pass);
-                $md->excute("insert into tbl_account(userName,passWord,email,vip) values('{$user}','{$pass}','{$email}',0)");
+                $md->excute("insert into tbl_account(userName,passWord,email,vip,name) values('{$user}','{$pass}','{$email}',0,'user')");
                 echo 'Đăng ký thành công';
                 echo "<script>setTimeout(function(){
                     window.location = 'login';
