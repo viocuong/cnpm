@@ -1,22 +1,27 @@
 <?php
     class register extends Controller{
         function default(){
-            $md=$this->requireModel('loginModel');
-            $errors=['erroruser'=>'','errorpass'=>'','errorrepass'=>'','erroremail'=>''];
+            //$md=$this->requireModel('loginModel');
+            $errors=['erroruser'=>'','errorpass'=>'','errorfullname'=>'','errorrepass'=>'','erroremail'=>''];
             $dataUser=[];
             $check=$check1=1;
             $user=$pass=$email="";
             if($_SERVER['REQUEST_METHOD']=="POST"){
                 $check1=0;
                 $dataUser['user']=$user=$_POST['user'];
-                $result = $md->excute("select * from tbl_account where userName='{$user}'");
+                $result = DataBase::getConnection()->query("select * from tbl_account where userName='{$user}'");
                 $dataUser['pass']=$pass=$_POST['pass'];
                 $repass=$_POST['repass'];
-                
+                $name=$_POST['fullname'];
+                $gender=$_POST['inlineRadioOptions'];
+                $country=$_POST['country'];
                 //$phone=$_POST['numPhone'];
                 $dataUser['email']=$email=$_POST['email'];
+
                 if($user==""){$errors['erroruser']="không được để trống";$check=0;}
                 else $errors['erroruser']='';
+                if($user==""){$errors['errorfullname']="không được để trống";$check=0;}
+                else $errors['errorfullname']='';
                 if($pass=="") { $errors['errorpass']="không được để trống"; $check=0;}
                 else $errors['errorpass']='';
                 if($repass=="") {$errors['errorrepass']="không được để trống";$check=0;}
@@ -28,8 +33,12 @@
             }
             if($check==1&& $check1==0){
                 $pass=md5($pass);
-                $md->excute("insert into tbl_account(userName,passWord,email,vip,name) values('{$user}','{$pass}','{$email}',0,'user')");
-                echo 'Đăng ký thành công';
+                $GLOBALS['user']=new userfree($name,$user,$pass,0,$email,$gender,$country,"Vietcombank");
+                
+///////////////// Dang ki tai khoan //////////////////////////
+                $GLOBALS['user']->register();
+                //$md->excute("insert into tbl_account(userName,passWord,email,vip,name) values('{$user}','{$pass}','{$email}',0,'{$name}')");
+                echo "<script>alert('Đăng ký thành công')</script>";
                 echo "<script>setTimeout(function(){
                     window.location = 'login';
                 }, 1000);</script>";

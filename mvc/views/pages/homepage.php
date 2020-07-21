@@ -36,7 +36,7 @@
             if(user =='') alert('không có quyền truy cập, vui lòng đăng nhập');
             else{
 ////////   gọi controller user để hiển thị trang cho người dùng nghe nhạc ////////////////////////////////////////////////////////////////////
-                $.post('./user',function(data){
+                $.post('./userNormal',function(data){
                     $("#mainhome").html(data);
                 });
             }

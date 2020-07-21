@@ -9,17 +9,20 @@
                     $error="";
                     $username=Functions::filter($_POST['user']);
                     $password=md5(Functions::filter($_POST['pass']));
-                    $md=$this->requireModel("accountModel");
-                    $resutl=$md->getAccount($username,$password);
-                    if(!empty($resutl)){
-                        $arr=$md->getData($username,$password);
-                        $vip=$arr['vip'];
+                   // $md=$this->requireModel("accountModel");
+                    $isUser=user::checkUser($username,$password);
+                    //$resutl=$md->getAccount($username,$password);
+                    if($isUser){
+                        $user=user::getUser($username);
+                        $vip=$user->getVip();
                         $_SESSION['vip']=$vip;
-                        $_SESSION['user']=$username;
+                        $_SESSION['user']=$user->getUserName();
+                        $GLOBALS['user']=$user;
                         header('Location: homepage');    
                     }
                     else $error="Thông tin tài khoản hoặc mật khẩu không chính xác";
                 }
+
             }
             $this->view("layout",['page'=>'login','error'=>$error]);
             

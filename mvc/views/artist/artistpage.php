@@ -4,7 +4,7 @@
     </div>
     <a id="allsong" class="clsuccess btn btnorder bgwhite col-md-3 mt-5 mb-5 rounded-lg shadow-lg m-1">
         <div class="clsuccess row p-4 justify-content-center">
-            Tất cả bài hát
+            Upload nhạc
         </div>
         <div class="row p-3 bd d-flex justify-content-between m-0">
             <div class="clsuccess justify-content-center d-flex  w-100">
@@ -14,7 +14,7 @@
     </a>
     <a id="hotsong" class="clsuccess btn btnorder bgwhite col-md-3 mt-5 mb-5 rounded-lg shadow-lg m-1">
         <div class="clsuccess row p-4 justify-content-center">
-            Bài hát hot
+            Abum
         </div>
         <div class="row p-3 bd d-flex justify-content-between m-0">
             <div class="clsuccess justify-content-center d-flex  w-100">
@@ -23,26 +23,15 @@
 
         </div>
     </a>
-    <a id="myplaylist" class="clsuccess btn btnorder bgwhite col-md-3 mt-5 mb-5 rounded-lg shadow-lg m-1">
-        <div class="clsuccess row p-4 justify-content-center">
-            Playlist của tôi
-
-        </div>
-        <div class="row p-3 bd d-flex justify-content-between m-0">
-            <div class="clsuccess justify-content-center d-flex  w-100">
-                <i style="font-size: 30px;" class="fas fa-stream"></i>
-                <div id='yetpay' class="ml-2 mb-4 p-1 bgpink rounded-circle" style="color: #ffffff;">
-
-                </div>
-            </div>
-        </div>
-    </a>
-
-    <form class="row w-100 mb-5 md-form mt-0">
+    
+    <div class="row w-100 justify-content-center">
+        <button id="triggersearch" class="btn bgpink p-3 clwhite"><i style="font-size: 30px;" class="fas fa-search"></i> Tìm kiếm bài hát</button>
+    </div>
+    <form id="formsearch" class="row w-100 mb-5 md-form mt-0 d-none">
         <div class="input-group">
             <input id="inputsearchsong" type="text" class="form-control bg-light border-dark small" placeholder="Tìm kiếm bài hát theo tên bài, nghệ sỹ..." aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button id="submitsearch" class="btn btn-primary" type="button">
                     <i class="fas fa-search fa-sm"></i>
                 </button>
             </div>
@@ -54,20 +43,29 @@
     </div>
 </div>
 <script>
-    $.post('./song', function(data) {
+    $("#triggersearch").click(function(){
+        $("#formsearch").removeClass("d-none");
+        $(this).fadeOut();
+    });
+    $.post('./listenMusic', function(data) {
         $("#content").html(data);
     });
     $("#allsong").click(function() {
-        $.post('./song', function(data) {
+        $.post('./listenMusic', function(data) {
             $("#content").html(data);
         });
     });
-    $.post("./ajax/viewAllProduct", function(data) {
-        $("#listproduct").html(data);
+    $("#submitsearch").click(function(){
+        var content = $(this).val();
+        $.post("./song/getsongbysearch", {
+            ct: content
+        }, function(data) {
+            $("#content").html(data);
+        });
     });
     $("#inputsearchsong").keyup(function() {
         var content = $(this).val();
-        $.post("./song/getsongbysearch", {
+        $.post("./searchMusic/getSongByKeyword", {
             ct: content
         }, function(data) {
             $("#content").html(data);

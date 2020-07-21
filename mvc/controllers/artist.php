@@ -1,5 +1,7 @@
 <?php
-    class homeartist extends Controller{
-        
+    class artist extends Controller{
+        function default(){
+            $this->viewArtist('artistpage');
+        }
     }
 ?>

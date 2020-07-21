@@ -4,6 +4,7 @@
 <head>
     <?php
     include('./includes/header.php');
+    if(isset($_SESSION['user'])) $user=$_SESSION['user'];
     ?>
 </head>
 
@@ -29,11 +30,11 @@
                             <a id="manager" class="btn mn nav-link font-menu1 cool-link ltr" style="color:#ffffff;"><i class="fas fa-headphones"></i> Khám phá</a>
                         </li>
                         <li class="nav-item pr-3 ltr">
-                            <a href="./account" id="menubar" class="mn nav-link font-menu1 cool-link" style="color:#ffffff">
+                            <a href="./editInfor" id="menubar" class="mn nav-link font-menu1 cool-link" style="color:#ffffff">
                                 <i class="fas fa-user"></i><?php
-                                                            $user = 'Account';
+                                                            $user = 'Đăng nhập';
                                                             if (!empty($_SESSION['user'])) {
-                                                                $user = $_SESSION['user'];
+                                                                $user = "Sửa thông tin tài khoản";
                                                             }
                                                             echo $user;
                                                             ?></a>
