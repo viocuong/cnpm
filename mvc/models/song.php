@@ -15,6 +15,7 @@ class song
         $this->artis=$artist;
         $this->idSong=$idSong;
         $this->src=$src;
+        
     }
     static function getAllSong()
     {
@@ -54,5 +55,5 @@ class song
     function getCagetories(){return $this->cagetories;}
     function getIssue(){return $this->issue;}
     function getSrc(){return $this->src;}
-    function getArtist(){return $this->artist;}
+    function getArtist(){return $this->artis;}
 }
