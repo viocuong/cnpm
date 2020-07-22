@@ -5,7 +5,7 @@
             $errors=['erroruser'=>'','errorpass'=>'','errorfullname'=>'','errorrepass'=>'','erroremail'=>''];
             $dataUser=[];
             $check=$check1=1;
-            $user=$pass=$email="";
+            $user=$pass=$email=$name=$gender=$country="";
             if($_SERVER['REQUEST_METHOD']=="POST"){
                 $check1=0;
                 $dataUser['user']=$user=$_POST['user'];
@@ -33,10 +33,12 @@
             }
             if($check==1&& $check1==0){
                 $pass=md5($pass);
-                $GLOBALS['user']=new userfree($name,$user,$pass,0,$email,$gender,$country,"Vietcombank");
+                
+                $userfree=new userfree($name,$user,$pass,0,$email,$gender,$country,"Vietcombank");
                 
 ///////////////// Dang ki tai khoan //////////////////////////
-                $GLOBALS['user']->register();
+                $userfree->register();
+                //print_r($userfree);
                 //$md->excute("insert into tbl_account(userName,passWord,email,vip,name) values('{$user}','{$pass}','{$email}',0,'{$name}')");
                 echo "<script>alert('Đăng ký thành công')</script>";
                 echo "<script>setTimeout(function(){

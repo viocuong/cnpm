@@ -30,13 +30,13 @@
                             <a id="manager" class="btn mn nav-link font-menu1 cool-link ltr" style="color:#ffffff;"><i class="fas fa-headphones"></i> Khám phá</a>
                         </li>
                         <li class="nav-item pr-3 ltr">
-                            <a href="./editInfor" id="menubar" class="mn nav-link font-menu1 cool-link" style="color:#ffffff">
+                            <a href="./editInfor"  id="menubar" class="btn mn nav-link font-menu1 cool-link" style="color:#ffffff">
                                 <i class="fas fa-user"></i><?php
-                                                            $user = 'Đăng nhập';
+                                                            $usern = 'Đăng nhập';
                                                             if (!empty($_SESSION['user'])) {
-                                                                $user = "Sửa thông tin tài khoản";
+                                                                $usern = "Sửa thông tin tài khoản";
                                                             }
-                                                            echo $user;
+                                                            echo $usern;
                                                             ?></a>
                         </li>
                     </ul>
@@ -69,6 +69,7 @@
     <script>
         var count = 1;
         $(document).ready(function() {
+            
             $("#manager").click(function() {
                 var user = '<?php if (isset($_SESSION['user'])) echo $_SESSION['user']; else echo ''; ?>';
                 if (user == ''){

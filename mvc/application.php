@@ -1,5 +1,5 @@
 <?php
-require_once './mvc/models/user.php';
+
 require_once './mvc/models/user.php';
 include_once './mvc/models/song.php';
 require_once './mvc/models/userfree.php';

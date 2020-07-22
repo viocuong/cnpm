@@ -56,7 +56,7 @@ class user
     public function getVip(){
         return $this->vip;
     }
-    public function getUserName(){
+public function getUserName(){
         return $this->username;
     }
     public function getPass(){

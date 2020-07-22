@@ -16,7 +16,8 @@
         }
         function default($param){
             $data= userfree::getUserFree($this->user);
-           
+            
+            //echo $data->getName();
             //print_r($data);
             $this->view('layout',['page'=>'editinformation','data'=>$data]);
         
@@ -38,7 +39,7 @@
             else{
                 userfree::editUser($username,$name,$mail,$country);
                 $user=userfree::getUserFree($username);
-                $this->viewpage('detailinfor',['data'=>$user]);
+                $this->viewPage('detailinfor',['data'=>$user]);
 
             }
         }

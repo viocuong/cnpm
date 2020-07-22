@@ -16,8 +16,8 @@
                         $user=user::getUser($username);
                         $vip=$user->getVip();
                         $_SESSION['vip']=$vip;
-                        $_SESSION['user']=$user->getUserName();
-                        $GLOBALS['user']=$user;
+                        $_SESSION['user']=$username;
+                        
                         header('Location: homepage');    
                     }
                     else $error="Thông tin tài khoản hoặc mật khẩu không chính xác";

@@ -1,5 +1,6 @@
 <?php
-$user = $arr['data'];
+$User = $arr['data'];
+
 ?>
 <div id="page" class="container-fluid p-5">
     <div class="row justify-content-around bg-light rounded-lg shadow-lg mt-5 p-5">
@@ -9,24 +10,25 @@ $user = $arr['data'];
             </div>
             <div class="card-body p-3">
                 <form>
+                    
                     <div class="form-group">
                         <label for="formGroupExampleInput">Tài khoản</label>
-                        <input readonly value="<?php echo $user->getUserName(); ?>" type="text" class="form-control" id="username" placeholder="">
+                        <input readonly value="<?php echo $User->getUserName(); ?>" type="text" class="form-control" id="username" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Tên</label>
-                        <input value="<?php echo $user->getName(); ?>" type="text" class="form-control" id="name" placeholder="">
+                        <label for="formGroupExampleInput3">Tên</label>
+                        <input value="<?php echo $User->getName(); ?>" type="text" class="form-control" id="name" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Email</label>
-                        <input value="<?php echo $user->getEmail(); ?>" type="text" class="form-control" id="email" placeholder="">
+                        <label for="formGroupExampleInput4">Email</label>
+                        <input value="<?php echo $User->getEmail(); ?>" type="text" class="form-control" id="email" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Quốc gia</label>
-                        <input value="<?php echo $user->getCountry(); ?>" type="text" class="form-control" id="country" placeholder="">
+                        <label for="formGroupExampleInput5">Quốc gia</label>
+                        <input value="<?php echo $User->getCountry(); ?>" type="text" class="form-control" id="country" placeholder="">
                     </div>
                     <div class="form-group">
-                        <label for="formGroupExampleInput2">Vui lòng nhập mật khẩu để xác thực là bạn</label>
+                        <label for="formGroupExampleInput6">Vui lòng nhập mật khẩu để xác thực là bạn</label>
                         <input type="password" class="form-control" id="pass">
                     </div>
 
