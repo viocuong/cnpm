@@ -7,7 +7,7 @@
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 if(isset($_POST)){
                     $error="";
-                    $username=Functions::filter($_POST['user']);
+                    $username=$_POST['user'];
                     $password=md5(Functions::filter($_POST['pass']));
                    // $md=$this->requireModel("accountModel");
                     $isUser=user::checkUser($username,$password);
