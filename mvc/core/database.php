@@ -2,9 +2,9 @@
     class DataBase{
         protected static $conn;
         protected static $servername="localhost";
-        protected static $username="cuongnguyen";
-        protected static $password="cuong28021999";
-        protected static $dbname="cnpm";
+        protected static $username="phpmyadmin";
+        protected static $password="cuong280299";
+        protected static $dbname="test";
         //function __construct(){
         // {
         //     if(!isset($conn)){
